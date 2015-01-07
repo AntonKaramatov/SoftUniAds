@@ -1,4 +1,4 @@
-<h2>Home Screen</h2>
+<h2>My Ads</h2>
 <ul class="ads">
     <li ng-repeat="ad in data.ads" class="box">
         <h1>{{ad.title}}</h1>
@@ -8,9 +8,15 @@
             <strong>Image:</strong>
             <img class="ad-image" ng-src="{{ad.imageDataUrl}}" />
         </div>
-        <div><strong>Owner:</strong> {{ad.ownerName}}</div>
-        <div><strong>Email:</strong> {{ad.ownerEmail}}</div>
-        <div><strong>Phone:</strong> {{ad.ownerPhone}}</div>
+        <div><strong>Status:</strong> {{ad.status}}</div>
+
+        <div ng-if="ad.status !== 'Inactive'">
+            <a class="button" ng-click="deactivate(ad.id)" >Deactivate</a>
+        </div>
+
+         <div ng-if="ad.status === 'Inactive'">
+            <a class="button" ng-click="publishAgain(ad.id)" >Publish Again</a>
+        </div>
     </li>
 </ul>
 
@@ -23,4 +29,3 @@
 <div ng-if="data.ads.length==0" class="box no-data">
     No ads found.
 </div>
-

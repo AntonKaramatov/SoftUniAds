@@ -20,8 +20,32 @@ app.config(function ($routeProvider) {
         controller: 'RegisterController'
     });
 
+    $routeProvider.when('/user/ads/publish', {
+        templateUrl: 'templates/user/publish-new-ad.html',
+        controller: 'UserPublishNewAdController'
+    });
+
+    $routeProvider.when('/user/ads', {
+        templateUrl: 'templates/user/my-ads.html',
+        controller: 'UserMyAdsController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
 
 });
+
+app.run(function ($rootScope, $location, authService) {
+    $rootScope.$on('$locationChangeStart', function(event){
+        if($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()){
+            $location.path("/");
+        }
+        if($location.path() === "/user/ads") {
+            $rootScope.showAdsMenu = true;
+        }
+        else {
+            $rootScope.showAdsMenu = false;
+        }
+    })
+})

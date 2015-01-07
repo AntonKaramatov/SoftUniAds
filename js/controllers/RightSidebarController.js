@@ -2,7 +2,7 @@
 
 // The RightSidebarController controls the content displayed in the right sidebar
 app.controller('RightSidebarController',
-    function ($scope, $rootScope,categoriesService, townsService) {
+    function ($scope, $rootScope, categoriesService, townsService) {
 		$scope.towns = townsService.getTowns();
 		$scope.categories = categoriesService.getCategories();
 		$scope.categoryClicked = function(clickedCategoryId){
