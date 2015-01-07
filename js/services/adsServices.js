@@ -16,8 +16,8 @@ app.factory('adsService',
 app.factory('townsService',
 	function ($resource, baseServiceUrl) {
 		var resource = $resource(baseServiceUrl + "/api/towns");
-		function getAllTowns() {
-				return resource.query();
+		function getAllTowns(success, error) {
+				return resource.query(success, error);
 		}
 		return {
 			getTowns:getAllTowns
@@ -28,8 +28,8 @@ app.factory('townsService',
 app.factory('categoriesService',
 	function ($resource, baseServiceUrl) {
 		var resource = $resource(baseServiceUrl + "/api/categories");
-		function getAllCategories() {
-			return resource.query();
+		function getAllCategories(success, error) {
+			return resource.query(success, error);
 		}
 		return {
 			getCategories:getAllCategories
