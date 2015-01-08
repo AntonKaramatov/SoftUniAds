@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('AdminHomeController',
-    function ($scope, $rootScope, adminService, notifyService, pageSize) {
+    function ($scope, $rootScope, $location, adminService, notifyService, pageSize) {
     	$rootScope.pageTitle = "Home";
 		$scope.adsParams = {
 			"startPage" : 1,
@@ -46,7 +46,7 @@ app.controller('AdminHomeController',
 		}
 
 		$scope.editAd = function(id){
-			$location.path("/admin/ads/delete/" + id);
+			$location.path("/admin/ads/edit/" + id);
 		}
 
 		$scope.deleteAd = function(id){

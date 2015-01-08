@@ -50,6 +50,16 @@ app.config(function ($routeProvider) {
         controller: 'AdminHomeController'
     });
 
+    $routeProvider.when('/admin/ads/edit/:id', {
+        templateUrl: 'templates/admin/edit-ad.html',
+        controller: 'AdminEditAdController'
+    });
+
+    $routeProvider.when('/admin/ads/delete/:id', {
+        templateUrl: 'templates/admin/delete-ad.html',
+        controller: 'AdminDeleteAdController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
@@ -75,6 +85,13 @@ app.run(function ($rootScope, $location, authService) {
         }
         else {
             $rootScope.showAdsMenu = false;
+        }
+
+        if($location.path() === "/" || $location.path() === "/admin/home") {
+            $rootScope.showFilters = true;
+        }
+        else {
+            $rootScope.showFilters = false;
         }
     })
 })

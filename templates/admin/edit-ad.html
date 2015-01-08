@@ -11,12 +11,22 @@
 </div>
 
 <div>
+	<label for="date">Date:</label>
+	<input type="text" id="date" ng-model="adData.date" required />
+</div>
+
+<div>
 	<label for="image">Image:</label>
 	<input type="file" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
 	<div class="image-box">
 		<p>Image Preview</p>
 	</div>
 	<a class="button" ng-click="deleteImage()">Remove Image</a>
+</div>
+
+<div>
+	<label for="username">Owner Username:</label>
+	<input type="text" id="username" ng-model="adData.ownerUsername" required />
 </div>
 
 <div>
@@ -36,7 +46,17 @@
 </div>
 
 <div>
+	<label for="status">Status:</label>
+	<select id="status" ng-model="adData.status">
+		<option selected value="WaitingApproval">Waiting Approval</option>
+		<option selected value="Published">Published</option>
+		<option selected value="Inactive">Inactive</option>
+		<option selected value="Rejected">Rejected</option>
+	</select>
+</div>
+
+<div>
 	<a ng-click="editAd(adData)" class="button">Edit</a>
-	<a href="#/user/ads" class="button">Cancel</a>
+	<a href="#/admin/home" class="button">Cancel</a>
 </div>
 </div>
