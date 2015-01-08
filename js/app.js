@@ -45,6 +45,11 @@ app.config(function ($routeProvider) {
         controller: 'UserEditProfileController'
     });
 
+    $routeProvider.when('/admin/home', {
+        templateUrl: 'templates/admin/home.html',
+        controller: 'AdminHomeController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
@@ -56,7 +61,16 @@ app.run(function ($rootScope, $location, authService) {
         if($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()){
             $location.path("/");
         }
-        if($location.path() === "/user/ads") {
+
+        if($location.path().indexOf("/admin") != -1 && !authService.isAdmin()){
+            $location.path("/");
+        }
+
+        if($location.path() === "/" && authService.isAdmin()){
+            $location.path("/admin/home");
+        }
+
+        if($location.path() === "/user/ads" || $location.path() === "/admin/home") {
             $rootScope.showAdsMenu = true;
         }
         else {
