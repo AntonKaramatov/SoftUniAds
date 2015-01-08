@@ -44,6 +44,61 @@ ul.pagination {
     margin: 15px auto;
 }
 
+ul.pagination a{   
+    color: #1C381C; 
+    background-color: #A9D18E;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .active a{   
+    color: #1C381C; 
+    background-color: #DAA600;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .active a:hover{   
+    color: #1C381C; 
+    background-color: #DAA600;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .disabled a{   
+    color: #1C381C; 
+    background-color: #E2F0D9;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .disabled a:hover{   
+    color: #1C381C; 
+    background-color: #E2F0D9;
+    border: #507E32 1px solid;
+} 
+
+ul.pagination a:hover{
+    color: #1C381C; 
+    border: #507E32 1px solid;
+    background-color: #9ec684;
+}
+
+ul.pagination a:focus{   
+    color: #1C381C; 
+    background-color: #A9D18E;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .active a:focus{   
+    color: #1C381C; 
+    background-color: #DAA600;
+    border: #507E32 1px solid;
+}
+
+ul.pagination .disabled a:focus{   
+    color: #1C381C; 
+    background-color: #E2F0D9;
+    border: #507E32 1px solid;
+}
+
+
 ul.ads {
     padding: 0;
 }

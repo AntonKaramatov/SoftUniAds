@@ -33,10 +33,39 @@ app.factory('userService',
             },
 
             publishAgainAd: function (id, success, error) {
-                 var request = {
+                var request = {
                     method: 'PUT',
                     url: baseServiceUrl + '/api/user/ads/publishagain/' + id,
                     headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
+            },
+
+            getProfile: function (success, error){
+                var request = {
+                    method: 'GET',
+                    url: baseServiceUrl + '/api/user/profile',
+                    headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
+            },
+
+            editProfile: function (userData, success, error){
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/user/profile',
+                    headers: authService.getAuthHeaders(),
+                    data: userData
+                };
+                $http(request).success(success).error(error);
+            },
+
+            changePassword: function (passwordData, success, error){
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/user/ChangePassword',
+                    headers: authService.getAuthHeaders(),
+                    data: passwordData
                 };
                 $http(request).success(success).error(error);
             }
