@@ -16,6 +16,8 @@
 
          <div ng-if="ad.status === 'Inactive'">
             <a class="button" ng-click="publishAgain(ad.id)" >Publish Again</a>
+            <a class="button" ng-click="edit(ad.id)" >Edit</a>
+            <a class="button" ng-click="delete(ad.id)" >Delete</a>
         </div>
     </li>
 </ul>

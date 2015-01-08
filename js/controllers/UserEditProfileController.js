@@ -37,14 +37,6 @@ app.controller('UserEditProfileController',
         		});
         }
 
-        $scope.cancelProfile = function(){
-        	$scope.getProfile();
-        };
-
-        $scope.cancelPass = function() {
-        	$scope.passwordData = {};
-        }
-
         $scope.getProfile();
 	}
 );

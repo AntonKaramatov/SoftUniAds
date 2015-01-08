@@ -43,6 +43,14 @@ app.controller('UserMyAdsController',
 				})
 		}
 
+		$scope.delete = function(id){
+			$location.path("/user/ads/delete/" + id);
+		}
+
+		$scope.edit = function(id){
+			$location.path("/user/ads/edit/" + id);
+		}
+
 		$scope.$on("statusSelectionChanged", function(event, selectedStatus) {
 		    $scope.adsParams.status = selectedStatus;
 		    $scope.reloadAds();

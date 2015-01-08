@@ -1,14 +1,35 @@
 'use strict';
 
 app.factory('adsService',
-	function ($resource, baseServiceUrl) {
-		var resource = $resource(baseServiceUrl + "/api/ads",
-			null);
-		function getAllAds(params, success, error){
-			return resource.get(params, success, error);
-		}
+	function ($http, baseServiceUrl, authService) {
 		return {
-			getAds:getAllAds
+			getAds: function(params, success, error) {
+                var request = {
+                    method: "GET",
+                    url: baseServiceUrl + "/api/ads",
+                    params: params
+                };
+                $http(request).success(success).error(error);
+            },
+
+            getAdById: function(id, success, error) {
+            	var request = {
+                    method: "GET",
+                    url: baseServiceUrl + "/api/user/ads/" + id,
+                    headers: authService.getAuthHeaders()
+                };
+                $http(request).success(success).error(error);
+            },
+
+            editAd: function (adData, success, error){
+            	var request = {
+                    method: "PUT",
+                    url: baseServiceUrl + "/api/user/ads/" + adData.id,
+                    headers: authService.getAuthHeaders(),
+                    data: adData
+                };
+                $http(request).success(success).error(error);
+            }
 		};
     }
 );
