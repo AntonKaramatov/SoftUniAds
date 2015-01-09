@@ -1,0 +1,22 @@
+<div class="box">
+	<h2>{{pageTitle}}</h2>
+	<h3>Category:</h3>
+
+	<span ng-if="pageTitle == 'Create Category'">
+		<input type="text" ng-model="category"><br>
+		<a ng-click="create(category)" class="button">Create</a>		
+	</span>
+
+	<span ng-if="pageTitle == 'Edit Category'">
+		<input type="text" ng-model="cat.username"><br>
+		<a ng-click="edit(cat)" class="button">Edit</a>		
+	</span>
+
+	<span ng-if="pageTitle == 'Delete Category'">
+		<h3>{{cat.username}}</h3>
+		<h4>Confirm deleting category?</h4>
+		<a ng-click="delete(cat.id)" class="button">Delete</a>		
+	</span>
+
+	<a href="#/admin/categories/list" class="button">Cancel</a>
+</div>
