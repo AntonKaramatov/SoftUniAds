@@ -40,7 +40,6 @@ app.factory('adminService',
                 $http(request).success(success).error(error);
             },
 
-
             editAd: function (adData, success, error){
             	var request = {
                     method: "PUT",
@@ -95,6 +94,26 @@ app.factory('adminService',
                     url: baseServiceUrl + "/api/admin/setPassword/",
                     headers: authService.getAuthHeaders(),
                     data: passwordData
+                };
+                $http(request).success(success).error(error);
+            },
+
+            getCategories: function(params, success, error) {
+                var request = {
+                    method: "GET",
+                    url: baseServiceUrl + "/api/admin/categories",
+                    headers: authService.getAuthHeaders(),
+                    params: params
+                };
+                $http(request).success(success).error(error);
+            },
+
+            createCategory: function(data, success, error){
+                 var request = {
+                    method: "POST",
+                    url: baseServiceUrl + "/api/admin/categories",
+                    headers: authService.getAuthHeaders(),
+                    data: data
                 };
                 $http(request).success(success).error(error);
             }

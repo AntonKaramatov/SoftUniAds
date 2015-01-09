@@ -75,6 +75,26 @@ app.config(function ($routeProvider) {
         controller: 'AdminDeleteUserController'
     });
 
+    $routeProvider.when('/admin/categories/list', {
+        templateUrl: 'templates/admin/categories.html',
+        controller: 'AdminCategoriesController'
+    });
+
+    $routeProvider.when('/admin/categories/create', {
+        templateUrl: 'templates/admin/category.html',
+        controller: 'AdminCreateCategoryController'
+    });
+
+    $routeProvider.when('/admin/categories/edit/:id', {
+        templateUrl: 'templates/admin/category.html',
+        controller: 'AdminEditCategoryController'
+    });
+
+    $routeProvider.when('/admin/categories/delete/:id', {
+        templateUrl: 'templates/admin/category.html',
+        controller: 'AdminDeleteCategoryController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );

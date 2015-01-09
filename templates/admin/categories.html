@@ -1,0 +1,31 @@
+<h2>Categories</h2>
+
+<table class="tablelist">
+    <tr>
+        <th class="sort" ng-click="sort('Id')"><span ng-class="{'arrUp' : catParams.sortBy == 'Id', 'arrDown' : catParams.sortBy == '-Id'}">Id</span></th>
+        <th class="sort" ng-click="sort('Name')"><span ng-class="{'arrUp' : catParams.sortBy == 'Name', 'arrDown' : catParams.sortBy == '-Name'}">Category</span></th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="cat in data.categories">
+        <td>{{cat.id}}</td>
+        <td>{{cat.username}}</td>
+        <td>
+            <a class="button" ng-click="editCategory(cat)">Edit</a>
+            <a class="button" ng-click="deleteCategory(cat)">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<pagination total-items="data.numItems" ng-model="catParams.startPage"
+  items-per-page="catParams.pageSize" ng-change="reloadCategories()"
+  max-size="9" boundary-links="true">
+</pagination>
+
+<div align="center">
+    <a href="#/admin/categories/create" class="button">Create New Category</a>
+</div>
+
+<div ng-if="data.categories.length==0" class="box no-data">
+    No users found.
+</div>
+
