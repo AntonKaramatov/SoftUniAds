@@ -95,6 +95,26 @@ app.config(function ($routeProvider) {
         controller: 'AdminDeleteCategoryController'
     });
 
+    $routeProvider.when('/admin/towns/list', {
+        templateUrl: 'templates/admin/towns.html',
+        controller: 'AdminTownsController'
+    });
+
+    $routeProvider.when('/admin/towns/create', {
+        templateUrl: 'templates/admin/town.html',
+        controller: 'AdminCreateTownController'
+    });
+
+    $routeProvider.when('/admin/towns/edit/:id', {
+        templateUrl: 'templates/admin/town.html',
+        controller: 'AdminEditTownController'
+    });
+
+    $routeProvider.when('/admin/towns/delete/:id', {
+        templateUrl: 'templates/admin/town.html',
+        controller: 'AdminDeleteTownController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );

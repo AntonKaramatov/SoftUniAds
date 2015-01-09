@@ -7,7 +7,7 @@ app.controller('AdminEditCategoryController',
         delete($rootScope.cat);
     	$scope.edit = function (category){
             var cat = {"name": category.username}
-    		adminService.createCategory(cat, category.id,
+    		adminService.editCategory(cat, category.id,
     			function success(){
     				notifyService.showInfo("Category edited successfully");
     				$location.path("/admin/categories/list");

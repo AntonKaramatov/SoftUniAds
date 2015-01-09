@@ -38,6 +38,7 @@ app.controller('AdminCategoriesController',
 				case 1: $scope.catParams.sortBy = $scope.catParams.sortBy.substring(1); break;
 				default: $scope.catParams.sortBy = param;
 			}
+			$scope.catParams.startPage = 1;
 			$scope.reloadCategories();
 		}
 

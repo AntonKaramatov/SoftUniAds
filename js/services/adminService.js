@@ -118,7 +118,7 @@ app.factory('adminService',
                 $http(request).success(success).error(error);
             },
 
-            createCategory: function(data, id, success, error){
+            editCategory: function(data, id, success, error){
                  var request = {
                     method: "PUT",
                     url: baseServiceUrl + "/api/admin/categories/" + id,
@@ -132,6 +132,45 @@ app.factory('adminService',
                  var request = {
                     method: "DELETE",
                     url: baseServiceUrl + "/api/admin/categories/" + id,
+                    headers: authService.getAuthHeaders(),
+                };
+                $http(request).success(success).error(error);
+            },
+
+            getTowns: function(params, success, error) {
+                var request = {
+                    method: "GET",
+                    url: baseServiceUrl + "/api/admin/towns",
+                    headers: authService.getAuthHeaders(),
+                    params: params
+                };
+                $http(request).success(success).error(error);
+            },
+
+            createTown: function(data, success, error){
+                 var request = {
+                    method: "POST",
+                    url: baseServiceUrl + "/api/admin/towns",
+                    headers: authService.getAuthHeaders(),
+                    data: data
+                };
+                $http(request).success(success).error(error);
+            },
+
+            editTown: function(data, id, success, error){
+                 var request = {
+                    method: "PUT",
+                    url: baseServiceUrl + "/api/admin/towns/" + id,
+                    headers: authService.getAuthHeaders(),
+                    data: data
+                };
+                $http(request).success(success).error(error);
+            },
+
+            deleteTown: function(id, success, error){
+                 var request = {
+                    method: "DELETE",
+                    url: baseServiceUrl + "/api/admin/towns/" + id,
                     headers: authService.getAuthHeaders(),
                 };
                 $http(request).success(success).error(error);

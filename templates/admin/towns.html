@@ -1,0 +1,31 @@
+<h2>Towns</h2>
+
+<table class="tablelist">
+    <tr>
+        <th class="sort" ng-click="sort('Id')"><span ng-class="{'arrUp' : townParams.sortBy == 'Id', 'arrDown' : townParams.sortBy == '-Id'}">Id</span></th>
+        <th class="sort" ng-click="sort('Name')"><span ng-class="{'arrUp' : townParams.sortBy == 'Name', 'arrDown' : townParams.sortBy == '-Name'}">Town</span></th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="town in data.towns">
+        <td>{{town.id}}</td>
+        <td>{{town.username}}</td>
+        <td>
+            <a class="button" ng-click="editTown(town)">Edit</a>
+            <a class="button" ng-click="deleteTown(town)">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<pagination total-items="data.numItems" ng-model="townParams.startPage"
+  items-per-page="townParams.pageSize" ng-change="reloadTowns()"
+  max-size="9" boundary-links="true">
+</pagination>
+
+<div align="center">
+    <a href="#/admin/towns/create" class="button">Create New Town</a>
+</div>
+
+<div ng-if="data.towns.length==0" class="box no-data">
+    No users found.
+</div>
+
