@@ -1,25 +1,19 @@
 'use strict';
 
 app.controller('AdminDeleteUserController',
-    function ($scope, $rootScope, $route, $location, adsService, notifyService) {
-		$rootScope.pageTitle = "Delete Ad";
-		adsService.getAdById($route.current.params.id,
-			function success(data){
-				$scope.ad = data;
-			},
-			function error(err){
-				notifyService.showError("Getting ad failed", err);
-			}
-		);
+    function ($scope, $rootScope, $route, $location, adminService, notifyService) {
+		$rootScope.pageTitle = "Delete User";
+		$scope.userData = $rootScope.user;
+        delete($rootScope.user);
 
-		$scope.deleteAd = function(id){
-			adsService.deleteAd(id,
+		$scope.deleteUser = function(username){
+			adminService.deleteUser(username,
 				function success(){
-					notifyService.showInfo("Ad deleted successfully");
-					$location.path("/user/ads");
+					notifyService.showInfo("User deleted successfully");
+					$location.path("/admin/users/list");
 				},
 				function error(err){
-					notifyService.showError("Getting ad failed", err);
+					notifyService.showError("Deleting user failed", err);
 				}
 			);
 		}

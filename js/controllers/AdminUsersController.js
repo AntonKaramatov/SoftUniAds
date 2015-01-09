@@ -21,12 +21,14 @@ app.controller('AdminUsersController',
 			);
 		};
 
-		$scope.deleteUser = function(id){
-			$location.path("/admin/users/delete/" + id);
+		$scope.deleteUser = function(user){
+			$rootScope.user = user;
+			$location.path("/admin/users/delete/" + user.username);
 		}
 
-		$scope.editUser = function(id){
-			$location.path("/admin/users/edit/" + id);
+		$scope.editUser = function(user){
+			$rootScope.user = user;
+			$location.path("/admin/users/edit/" + user.username);
 		}
 
 		$scope.sort = function(param){

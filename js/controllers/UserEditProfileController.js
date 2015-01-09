@@ -26,7 +26,6 @@ app.controller('UserEditProfileController',
         };
 
         $scope.changePass = function (passwordData){
-        	console.log(passwordData);
         	userService.changePassword(passwordData,
         		function success(){
         			notifyService.showInfo("Password changed successfully");

@@ -1,0 +1,56 @@
+<div class="box">
+    <h2>Edit User</h2>
+	<form name="editProfileForm">	
+		<div>
+			<label for="username">Username:</label>
+			<input disabled type="text" id="username" ng-model="userData.username" required />
+		</div>
+
+		<div>
+			<label for="name">Name:</label>
+			<input type="text" id="name" ng-model="userData.name" required />
+		</div>
+		<div>
+			<label for="email">Email:</label>
+			<input type="text" id="email" ng-model="userData.email" required />
+		</div>
+		<div>
+			<label for="phone">Phone:</label>
+			<input type="text" id="phone" ng-model="userData.phoneNumber" required />
+		</div>
+		<div>
+			<label for="town">Town:</label>
+			<select id="town" ng-model="userData.townId">
+				<option selected value="null">(None)</option>
+				<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+			</select>
+		</div>
+
+		<div>
+			<input type="checkbox" id="isAdmin" ng-model="userData.isAdmin">
+			<label for="isAdmin">Is Administrator?</label>
+		</div>
+		<a ng-click="edit(userData)" class="button">Update</a>
+		<a href="#/admin/users/list" class="button">Cancel</a>
+	</form>
+</div>
+
+<div class="box">
+    <h2>Change Password</h2>
+	<form name="changePasswordForm">
+		<div>
+			<label for="username">Username:</label>
+			<input disabled type="text" id="username" ng-model="userData.username" required />
+		</div>	
+		<div>
+			<label for="password">New Password:</label>
+			<input type="password" id="password" ng-model="passwordData.newPassword" required />
+		</div>
+		<div>
+			<label for="confirmPassword">Repeat password:</label>
+			<input type="password" id="confirmPassword" ng-model="passwordData.confirmPassword" required />
+		</div>
+		<a ng-click="changePass(passwordData)" class="button">Change Password</a>
+		<a href="#/admin/users/list" class="button">Cancel</a>
+	</form>
+</div>

@@ -65,12 +65,12 @@ app.config(function ($routeProvider) {
         controller: 'AdminUsersController'
     });
 
-    $routeProvider.when('/admin/users/edit/:id', {
+    $routeProvider.when('/admin/users/edit/:user', {
         templateUrl: 'templates/admin/edit-user.html',
         controller: 'AdminEditUserController'
     });
 
-    $routeProvider.when('/admin/users/delete/:id', {
+    $routeProvider.when('/admin/users/delete/:user', {
         templateUrl: 'templates/admin/delete-user.html',
         controller: 'AdminDeleteUserController'
     });

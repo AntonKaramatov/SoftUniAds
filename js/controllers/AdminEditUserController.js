@@ -1,33 +1,26 @@
 'use strict';
 
 app.controller('AdminEditUserController',
-    function ($scope, $rootScope, $location, townsService, notifyService) {
+    function ($scope, $rootScope, $route, $location, adminService, townsService, notifyService) {
     	$rootScope.pageTitle = "Edit User";
 		$scope.towns = townsService.getTowns();
-		$scope.getProfile = function() {
-			userService.getProfile(
-				function success(data){
-					$scope.userData = data;
-				},
-				function error(err){
-					notifyService.showError("Getting profile failed", err);
-				}
-			);	
-		}
+		$scope.userData = $rootScope.user;
+        delete($rootScope.user);
 
 		$scope.edit = function(userData){
-        	userService.editProfile(userData,
+        	adminService.editUser(userData,
         		function success(){
-        			notifyService.showInfo("Profile update successful");
+        			notifyService.showInfo("User profile update successful");
+                    $location.path("/admin/users/list");
         		},
         		function error(err) {
-        			notifyService.showError("Profile update failed", err);
+        			notifyService.showError("User profile update failed", err);
         		});
         };
 
         $scope.changePass = function (passwordData){
-        	console.log(passwordData);
-        	userService.changePassword(passwordData,
+            passwordData.username = $scope.userData.username;
+        	adminService.changeUserPassword(passwordData,
         		function success(){
         			notifyService.showInfo("Password changed successfully");
         			$scope.passwordData = {};
@@ -36,7 +29,5 @@ app.controller('AdminEditUserController',
         			notifyService.showError("Password change failed", err);
         		});
         }
-
-        $scope.getProfile();
 	}
 );

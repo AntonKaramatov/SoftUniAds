@@ -1,0 +1,30 @@
+<div class="box">
+	<h2>Confirm Deleting User?</h2>
+		<div>
+			<strong>Username:</strong>{{userData.username}}
+		</div>
+
+		<div>
+			<strong>Name:</strong>{{userData.name}}
+		</div>
+
+		<div>
+			<strong>Email:</strong>{{userData.email}}
+		</div>
+
+		<div>
+			<strong>Phone:</strong>{{userData.phoneNumber}}
+		</div>
+
+		<div ng-if="userData.townName">
+			<strong>Town:</strong>{{userData.townName}}
+		</div>
+
+		<div>
+			<strong>Is Admin?:</strong>{{userData.isAdmin}}
+		</div>
+	<div>
+		<a ng-click="deleteUser(userData.username)" class="button">Delete</a>
+		<a href="#/admin/users/list" class="button">Cancel</a>
+	</div>
+</div>
