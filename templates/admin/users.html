@@ -1,0 +1,32 @@
+<h2>Users</h2>
+
+<table class="tablelist">
+    <tr>
+        <th class="sort" ng-click="sort('UserName')"><span ng-class="{'arrUp' : userParams.sortBy == 'UserName', 'arrDown' : userParams.sortBy == '-UserName'}">Username</span></th>
+        <th class="sort" ng-click="sort('Name')"><span ng-class="{'arrUp' : userParams.sortBy == 'Name', 'arrDown' : userParams.sortBy == '-Name'}">Name</span></th>
+        <th class="sort" ng-click="sort('Email')"><span ng-class="{'arrUp' : userParams.sortBy == 'Email', 'arrDown' : userParams.sortBy == '-Email'}">Email</span></th>
+        <th class="sort" ng-click="sort('PhoneNumber')"><span ng-class="{'arrUp' : userParams.sortBy == 'PhoneNumber', 'arrDown' : userParams.sortBy == '-PhoneNumber'}">Phone</span></th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="user in data.users">
+        <td>{{user.username}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>
+            <a class="button" ng-click="editUser(user.id)">Edit</a>
+            <a class="button" ng-click="deleteUser(user.id)">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<pagination total-items="data.numItems" ng-model="userParams.startPage"
+  items-per-page="userParams.pageSize" ng-change="reloadUsers()"
+  max-size="9" boundary-links="true">
+</pagination>
+
+
+<div ng-if="data.users.length==0" class="box no-data">
+    No users found.
+</div>
+

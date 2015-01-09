@@ -233,3 +233,35 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
     max-width: 150px;
     max-height: 150px;
 }
+
+.arrUp:after {
+    content: "\2193";
+}
+
+.arrDown:after {
+    content: "\2191";
+}
+
+.tablelist td, th{ 
+    width: 20%;  
+    background: #A9D18E;
+    border: #507E32 1px solid;
+    padding: 5px;
+    box-shadow: rgba(80, 126, 50, 0.5) 0.5px 0.5px 3px;
+}
+
+.tablelist {
+    width: 100%;
+    border-spacing: 3px;
+    border-collapse: separate;
+}
+
+.tablelist a{
+    margin: 0px;
+}
+
+.tablelist th.sort:hover {
+    background: #9ec684;
+    cursor: pointer;
+}
+

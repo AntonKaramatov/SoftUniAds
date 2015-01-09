@@ -60,6 +60,21 @@ app.config(function ($routeProvider) {
         controller: 'AdminDeleteAdController'
     });
 
+    $routeProvider.when('/admin/users/list', {
+        templateUrl: 'templates/admin/users.html',
+        controller: 'AdminUsersController'
+    });
+
+    $routeProvider.when('/admin/users/edit/:id', {
+        templateUrl: 'templates/admin/edit-user.html',
+        controller: 'AdminEditUserController'
+    });
+
+    $routeProvider.when('/admin/users/delete/:id', {
+        templateUrl: 'templates/admin/delete-user.html',
+        controller: 'AdminDeleteUserController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
