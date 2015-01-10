@@ -1,14 +1,16 @@
 <div class="box">
 	<h2>{{pageTitle}}</h2>
 	<h3>Town:</h3>
-
+<form name="townForm">
 	<span ng-if="pageTitle == 'Create Town'">
-		<input type="text" ng-model="town"><br>
+		<input type="text" name="town" ng-model="town" required>
+		<span class="error" ng-show="townForm.town.$error.required && townForm.town.$dirty">Town is required.</span><br>
 		<a ng-click="create(town)" class="button">Create</a>		
 	</span>
 
 	<span ng-if="pageTitle == 'Edit Town'">
-		<input type="text" ng-model="town.username"><br>
+		<input type="text" name="town" ng-model="town.username" required>
+		<span class="error" ng-show="townForm.town.$error.required && townForm.town.$dirty">Town is required.</span><br>
 		<a ng-click="edit(town)" class="button">Edit</a>		
 	</span>
 
@@ -19,4 +21,5 @@
 	</span>
 
 	<a href="#/admin/towns/list" class="button">Cancel</a>
+</form>
 </div>

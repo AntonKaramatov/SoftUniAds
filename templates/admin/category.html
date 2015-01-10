@@ -1,14 +1,18 @@
 <div class="box">
 	<h2>{{pageTitle}}</h2>
 	<h3>Category:</h3>
-
+<form name="catForm">
 	<span ng-if="pageTitle == 'Create Category'">
-		<input type="text" ng-model="category"><br>
+		<input type="text" name="cat" ng-model="category" required>
+		<span class="error" ng-show="catForm.cat.$error.required && catForm.cat.$dirty">Category is required.</span>
+		<br>
 		<a ng-click="create(category)" class="button">Create</a>		
 	</span>
 
 	<span ng-if="pageTitle == 'Edit Category'">
-		<input type="text" ng-model="cat.username"><br>
+		<input type="text" name="cat" ng-model="cat.username" required>
+		<span class="error" ng-show="catForm.cat.$error.required && catForm.cat.$dirty">Category is required.</span>
+		<br>
 		<a ng-click="edit(cat)" class="button">Edit</a>		
 	</span>
 
@@ -17,6 +21,6 @@
 		<h4>Confirm deleting category?</h4>
 		<a ng-click="delete(cat.id)" class="button">Delete</a>		
 	</span>
-
 	<a href="#/admin/categories/list" class="button">Cancel</a>
+</form>
 </div>
