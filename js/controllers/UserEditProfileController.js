@@ -19,6 +19,7 @@ app.controller('UserEditProfileController',
         	userService.editProfile(userData,
         		function success(){
         			notifyService.showInfo("Profile update successful");
+                    $location.path("#/")
         		},
         		function error(err) {
         			notifyService.showError("Profile update failed", err);

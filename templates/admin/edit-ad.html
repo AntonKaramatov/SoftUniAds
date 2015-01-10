@@ -1,22 +1,28 @@
 <div class="box">
 <h2>Edit Ad</h2>
+<form name="editAdForm">
 <div>
 	<label for="title">Title:</label>
-	<input type="text" id="title" ng-model="adData.title" required />
+	<input type="text" name="title" id="title" ng-model="adData.title" required />
+	<span class="error" ng-show="editAdForm.title.$error.required && editAdForm.title.$dirty">Title is required.</span>
 </div>
 
-<div>
+<div class="area-container">
 	<label for="text">Text:</label>
-	<textarea id="text" ng-model="adData.text" required></textarea>
+	<textarea id="text" name="text" ng-model="adData.text" required></textarea>
+	<span class="error" ng-show="editAdForm.text.$error.required && editAdForm.text.$dirty">Text is required.</span>
 </div>
 
 <div>
 	<label for="date">Date:</label>
-	<input type="text" id="date" ng-model="adData.date" required />
+	<input type="text" name="date" id="date" ng-model="adData.date" ng-pattern="/\d\d\d\d-\d\d-\d\d\w\d\d:\d\d:\d\d.\d\d\d\d\d\d\d/"/>
+	<span class="error" ng-show="editAdForm.date.$error.pattern && editAdForm.date.$dirty">Invalid date.
+	Must be in the format: yyyy-mm-ddThh:mm:ss.ffffzzz</span>
 </div>
 
 <div>
 	<label for="image">Image:</label>
+	<div class="image-input-div" ng-click="imageClick()"><a class="button">Browse...</a><span id="file-select-content">No file selected.</span></div>
 	<input type="file" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
 	<div class="image-box">
 		<p>Image Preview</p>
@@ -26,37 +32,44 @@
 
 <div>
 	<label for="username">Owner Username:</label>
-	<input type="text" id="username" ng-model="adData.ownerUsername" required />
+	<input type="text" id="username" ng-model="adData.ownerUsername"/>
 </div>
 
 <div>
 	<label for="category">Category:</label>
-	<select id="category" ng-model="adData.categoryId">
-		<option selected value="null">(None)</option>
-		<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
-	</select>
+	<div class="select-div">
+		<select id="category" ng-model="adData.categoryId">
+			<option selected value="null">(None)</option>
+			<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
+		</select>
+	</div>
 </div>
 
 <div>
 	<label for="town">Town:</label>
-	<select id="town" ng-model="adData.townId">
-		<option selected value="null">(None)</option>
-		<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-	</select>
+	<div class="select-div">
+		<select id="town" ng-model="adData.townId">
+			<option selected value="null">(None)</option>
+			<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+		</select>
+	</div>
 </div>
 
 <div>
 	<label for="status">Status:</label>
-	<select id="status" ng-model="adData.status">
-		<option selected value="WaitingApproval">Waiting Approval</option>
-		<option selected value="Published">Published</option>
-		<option selected value="Inactive">Inactive</option>
-		<option selected value="Rejected">Rejected</option>
-	</select>
+	<div class="select-div">
+		<select id="status" ng-model="adData.status">
+			<option selected value="WaitingApproval">Waiting Approval</option>
+			<option selected value="Published">Published</option>
+			<option selected value="Inactive">Inactive</option>
+			<option selected value="Rejected">Rejected</option>
+		</select>
+	</div>
 </div>
 
 <div>
 	<a ng-click="editAd(adData)" class="button">Edit</a>
 	<a href="#/admin/home" class="button">Cancel</a>
 </div>
+</form>
 </div>

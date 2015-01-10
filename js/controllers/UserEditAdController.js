@@ -23,6 +23,7 @@ app.controller('UserEditAdController',
 		$scope.fileSelected = function(fileInputField) {
 		    delete $scope.adData.imageDataUrl;
 		    var file = fileInputField.files[0];
+		    $("#file-select-content").html($("#image").val());
 		    if (file.type.match(/image\/.*/)) {
 		        var reader = new FileReader();
 		        reader.onload = function() {
@@ -36,6 +37,7 @@ app.controller('UserEditAdController',
 		};
 
 		$scope.deleteImage = function (){
+			$("#file-select-content").html("No file selected.");
 			delete $scope.adData.imageDataUrl;
 			$(".image-box").html("<p>Image Preview</p>");
 			$("#image").wrap('<form>').closest('form').get(0).reset();

@@ -1,18 +1,24 @@
 <div class="box">
 <h2>Publish New Ad</h2>
+<form name="publishAdForm">
 <div>
 	<label for="title">Title:</label>
-	<input type="text" id="title" ng-model="adData.title" required />
+	<input type="text" name="title" id="title" ng-model="adData.title" required />
+	<span class="error" ng-show="publishAdForm.title.$error.required && publishAdForm.title.$dirty">Title is required.</span>
 </div>
 
-<div>
+<div class="area-container">
 	<label for="text">Text:</label>
-	<textarea id="text" ng-model="adData.text"></textarea>
+	<textarea id="text" name="text" ng-model="adData.text" required></textarea>
+	<span class="error" ng-show="publishAdForm.text.$error.required && publishAdForm.text.$dirty">Text is required.</span>
 </div>
 
 <div>
 	<label for="image">Image:</label>
+	<div class="image-input-div" ng-click="imageClick()"><a class="button">Browse...</a><span id="file-select-content">No file selected.</span></div>
+
 	<input type="file" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
+
 	<div class="image-box">
 		<p>Image Preview</p>
 	</div>
@@ -20,22 +26,27 @@
 
 <div>
 	<label for="category">Category:</label>
-	<select id="category" ng-model="adData.categoryId">
-		<option selected value="null">(None)</option>
-		<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
-	</select>
+	<div class="select-div">
+		<select id="category" ng-model="adData.categoryId">
+			<option selected value="null">(None)</option>
+			<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
+		</select>
+	</div>
 </div>
 
 <div>
 	<label for="town">Town:</label>
-	<select id="town" ng-model="adData.townId">
-		<option selected value="null">(None)</option>
-		<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-	</select>
+	<div class="select-div">
+		<select id="town" ng-model="adData.townId">
+			<option selected value="null">(None)</option>
+			<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+		</select>
+	</div>
 </div>
 
 <div>
 	<a ng-click="publishAd(adData)" class="button">Publish</a>
 	<a href="#/user/ads" class="button">Cancel</a>
 </div>
+</form>
 </div>

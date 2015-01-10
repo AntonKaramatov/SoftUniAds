@@ -24,6 +24,7 @@ app.controller('UserPublishNewAdController',
 		$scope.fileSelected = function(fileInputField) {
 		    delete $scope.adData.imageDataUrl;
 		    var file = fileInputField.files[0];
+		    $("#file-select-content").html($("#image").val());
 		    if (file.type.match(/image\/.*/)) {
 		        var reader = new FileReader();
 		        reader.onload = function() {

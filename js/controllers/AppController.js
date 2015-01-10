@@ -10,5 +10,8 @@ app.controller('AppController',
 			notifyService.showInfo("Logout successful");
 			$location.path("/");
 		}
+		$scope.imageClick = function(){
+			$("#image").click();
+		}
     }
 );

@@ -269,3 +269,64 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
     cursor: pointer;
 }
 
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus {
+    background: none repeat scroll 0% 0% #E2F0D9;
+    border: 1px solid #507E32;
+    padding: 5px;
+    box-shadow: 0.5px 0.5px 3px rgba(80, 126, 50, 0.5);
+}
+
+input, select, textarea{
+    margin:3px;
+    border: 1px solid #507E32;
+    padding: 5px;
+    box-shadow: 0.5px 0.5px 3px rgba(80, 126, 50, 0.5);
+}
+
+select{
+    margin:0px;
+    width: 300px;
+    background: url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 89% 0px;
+}
+
+select:hover, select:focus{
+    background: url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 89% 0px;
+}
+
+textarea{
+    width:400px;
+    height: 150px;
+}
+
+#image {
+    opacity: 0;
+    height: 0px;
+}
+
+.image-input-div{
+    display:inline;
+    margin:3px;
+    border: 1px solid #507E32;
+    padding:15px 20px 15px 0px;
+    box-shadow: 0.5px 0.5px 3px rgba(80, 126, 50, 0.5);
+}
+
+.select-div{
+    border-right: 1px solid #507E32;
+    background-color: white;
+    overflow: hidden;
+    width: 280px;
+}
+
+.select-div:hover{
+    background-color: #E2F0D9;
+}
+
+.area-container *{
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+.error{
+    color: red;
+}

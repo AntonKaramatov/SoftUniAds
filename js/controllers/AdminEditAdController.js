@@ -5,6 +5,7 @@ app.controller('AdminEditAdController',
 		$rootScope.pageTitle = "Edit Ad";
 		$scope.towns = townsService.getTowns();
 		$scope.categories = categoriesService.getCategories();
+
 		$scope.getAd = function(){
 			adminService.getAdById($route.current.params.id,
 				function success(data){
@@ -23,6 +24,7 @@ app.controller('AdminEditAdController',
 		$scope.fileSelected = function(fileInputField) {
 		    delete $scope.adData.imageDataUrl;
 		    var file = fileInputField.files[0];
+		    $("#file-select-content").html($("#image").val());
 		    if (file.type.match(/image\/.*/)) {
 		        var reader = new FileReader();
 		        reader.onload = function() {
@@ -37,6 +39,7 @@ app.controller('AdminEditAdController',
 
 		$scope.deleteImage = function (){
 			delete $scope.adData.imageDataUrl;
+			$("#file-select-content").html("No file selected.");
 			$(".image-box").html("<p>Image Preview</p>");
 			$("#image").wrap('<form>').closest('form').get(0).reset();
   			$("#image").unwrap();

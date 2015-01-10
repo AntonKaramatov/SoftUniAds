@@ -3,29 +3,34 @@
 	<form name="editProfileForm">	
 		<div>
 			<label for="username">Username:</label>
-			<input disabled type="text" id="username" ng-model="userData.username" required />
+			<input disabled type="text" id="username" ng-model="userData.username" />
 		</div>
 
 		<div>
-			<label for="name">Name:</label>
-			<input type="text" id="name" ng-model="userData.name" required />
+			<label for="name">Name:*</label>
+			<input type="text" name="name" id="name" ng-model="userData.name" required />
+			<span class="error" ng-show="editProfileForm.name.$error.required && editProfileForm.name.$dirty">Name is required.</span>
 		</div>
 		<div>
-			<label for="email">Email:</label>
-			<input type="text" id="email" ng-model="userData.email" required />
+			<label for="email">Email:*</label>
+			<input type="email" name="email" id="email" ng-model="userData.email" required />
+			<span class="error" ng-show="editProfileForm.email.$error.required && editProfileForm.email.$dirty">Email is required.</span>
+			<span class="error" ng-show="editProfileForm.email.$error.email && editProfileForm.email.$dirty">Invalid email address.</span>
 		</div>
 		<div>
-			<label for="phone">Phone:</label>
-			<input type="text" id="phone" ng-model="userData.phoneNumber" required />
+			<label for="phone">Phone:*</label>
+			<input type="text" name="phone" id="phone" ng-model="userData.phoneNumber" required ng-pattern="/^([0-9\(\)\/\+ \-]*)$/"/>
+			<span class="error" ng-show="editProfileForm.phone.$error.pattern && editProfileForm.phone.$dirty">Invalid phone number.</span>
+			<span class="error" ng-show="editProfileForm.phone.$error.required && editProfileForm.phone.$dirty">Phone number is required.</span>
 		</div>
+
 		<div>
 			<label for="town">Town:</label>
-			<select id="town" ng-model="userData.townId">
-				<option selected value="null">(None)</option>
-				<option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-			</select>
+			<div class="select-div">
+				<select ng-model="userData.townId" ng-options="town.id as town.name for town in towns" required>
+				</select>
+			</div>
 		</div>
-
 		<div>
 			<input type="checkbox" id="isAdmin" ng-model="userData.isAdmin">
 			<label for="isAdmin">Is Administrator?</label>
@@ -40,15 +45,17 @@
 	<form name="changePasswordForm">
 		<div>
 			<label for="username">Username:</label>
-			<input disabled type="text" id="username" ng-model="userData.username" required />
+			<input disabled type="text" id="username" ng-model="userData.username"/>
 		</div>	
 		<div>
 			<label for="password">New Password:</label>
-			<input type="password" id="password" ng-model="passwordData.newPassword" required />
+			<input type="password" name="password" id="password" ng-model="passwordData.newPassword" required />
+			<span class="error" ng-show="changePasswordForm.password.$error.required && changePasswordForm.password.$dirty">Password is required.</span>
 		</div>
 		<div>
 			<label for="confirmPassword">Repeat password:</label>
-			<input type="password" id="confirmPassword" ng-model="passwordData.confirmPassword" required />
+			<input type="password" name="confirmPassword" id="confirmPassword" ng-model="passwordData.confirmPassword" required />
+			<span class="error" ng-show="(passwordData.newPassword != passwordData.confirmPassword) && changePasswordForm.confirmPassword.$dirty">Passwords do not match.</span>
 		</div>
 		<a ng-click="changePass(passwordData)" class="button">Change Password</a>
 		<a href="#/admin/users/list" class="button">Cancel</a>

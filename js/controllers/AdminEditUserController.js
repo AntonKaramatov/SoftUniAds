@@ -1,11 +1,11 @@
 'use strict';
 
 app.controller('AdminEditUserController',
-    function ($scope, $rootScope, $route, $location, adminService, townsService, notifyService) {
-    	$rootScope.pageTitle = "Edit User";
-		$scope.towns = townsService.getTowns();
-		$scope.userData = $rootScope.user;
-        delete($rootScope.user);
+    function ($scope, $rootScope, $location, adminService, townsService, notifyService) {
+        $rootScope.pageTitle = "Edit User";
+        $scope.userData = $rootScope.user;
+        delete($rootScope.user); 
+        $scope.towns = townsService.getTowns();
 
 		$scope.edit = function(userData){
         	adminService.editUser(userData,
@@ -18,7 +18,7 @@ app.controller('AdminEditUserController',
         		});
         };
 
-        $scope.changePass = function (passwordData){
+        $scope.changePass = function (passwordData){         
             passwordData.username = $scope.userData.username;
         	adminService.changeUserPassword(passwordData,
         		function success(){
