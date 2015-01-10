@@ -38,6 +38,7 @@ app.controller('AdminUsersController',
 				case 1: $scope.userParams.sortBy = $scope.userParams.sortBy.substring(1); break;
 				default: $scope.userParams.sortBy = param;
 			}
+			$scope.userParams.startPage = 1;
 			$scope.reloadUsers();
 		}
 

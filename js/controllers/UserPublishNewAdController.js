@@ -37,5 +37,12 @@ app.controller('UserPublishNewAdController',
 		    }
 		};
 
+		$scope.deleteImage = function (){
+			delete $scope.adData.imageDataUrl;
+			$("#file-select-content").html("No file selected.");
+			$(".image-box").html("<p>Image Preview</p>");
+			$("#image").wrap('<form>').closest('form').get(0).reset();
+  			$("#image").unwrap();
+		}
     }
 );
